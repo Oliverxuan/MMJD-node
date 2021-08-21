@@ -2,9 +2,10 @@
   "name": "MMJD-node",
   "version": "1.0.0",
   "description": "mmjd后端使用node实现",
-  "main": "index.js",
+  "main": "nodemon src/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./src/main.js"
   },
   "repository": {
     "type": "git",
@@ -20,7 +21,13 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "mysql2": "^2.3.0"
+    "jsonwebtoken": "^8.5.1",
+    "koa": "^2.13.1",
+    "koa-bodyparser": "^4.3.0",
+    "koa-router": "^10.0.0",
+    "mysql2": "^2.3.0",
+    "nodemon": "^2.0.12"
   }
 }
