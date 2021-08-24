@@ -11,13 +11,18 @@ class MomentService {
     return result
   }
 
-  async getMomentById(id) {
-    const statement = `SELECT m.content,m.createAt,g.img,g.name FROM moment m LEFT JOIN goodslist g ON(m.goods_id=g.id) WHERE user_id=?`
-    const [result] = await connection.execute(statement, [id])
-    return result
+  async getMomentById(momentId) {
+    const statement = `SELECT
+m.id id, m.content content,m.createAt createTime,m.updateAt updataTime,
+JSON_OBJECT('id',u.id,'name',u.name) author
+FROM moment m 
+LEFT JOIN users u ON m.user_id = u.id
+WHERE m.id = ?;`
+    const [result] = await connection.execute(statement, [momentId])
+    return result[0]
   }
   async getMomentByGoodsId(goodsId) {
-    const statement = `SELECT m.content,m.user_id,m.createAt,u.name FROM moment m LEFT JOIN users u ON (m.user_id = u.id) WHERE goods_id=?`
+    const statement = `SELECT * FROM moment WHERE goods_id=?`
     const [result] = await connection.execute(statement, [goodsId])
     return result
   }

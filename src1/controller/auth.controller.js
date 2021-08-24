@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken')
 const { PRIVATE_KEY } = require('../app/config')
+const { getUserByNanme } = require('../service/user.service')
 
 class AuthController {
   async login(ctx, next) {
@@ -13,7 +14,7 @@ class AuthController {
   }
 
   async success(ctx, next) {
-    ctx.body = '授权成功！  '
+    console.log('success')
   }
 }
 

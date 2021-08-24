@@ -14,8 +14,11 @@ class MomentController {
   }
 
   async detail(ctx, next) {
-    const {id}=ctx.user
-    const result = await momentService.getMomentById(id)
+    //拿到momentId
+    const momentId = ctx.params.momentId
+
+    //根据id查询动态
+    const result = await momentService.getMomentById(momentId)
     console.log(result)
     ctx.body = result
   }
